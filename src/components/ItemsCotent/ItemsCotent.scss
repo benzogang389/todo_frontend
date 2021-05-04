@@ -40,12 +40,19 @@
   }
 }
 
+.list__card--complete {
+  background-color: var(--color-green);
+}
+
 .list__card-title {
   font-size: 17px;
   max-width: 700px;
 }
 
 .list__card-content {
+  display: flex;
+  align-items: center;
+
   form {
     display: flex;
     align-items: flex-start;
@@ -54,6 +61,12 @@
 
 .list__card-btns--edit {
   margin-top: 9px;
+}
+
+.list__card-label {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
 }
 
 .list__card-category {

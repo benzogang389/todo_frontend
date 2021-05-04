@@ -13,4 +13,8 @@ export type RootThunkDispatch = ThunkDispatch<RootState, null, AnyAction>;
 
 export type RootThunkAction = ThunkAction<void, RootState, null, AnyAction>;
 
+export interface DeleteCommonProps {
+  id: string;
+}
+
 export const CLEAR_ALL_REDUCERS_DATA = 'CLEAR_ALL_REDUCERS_DATA';

@@ -1,22 +1,17 @@
 import { Link } from 'react-router-dom';
 
+import ListOfSelectCategory from 'shared/components/ListOfSelectCategory/ListOfSelectCategory';
+
 import { ItemsHeaderProps } from './types';
 
 import './ItemsHeader.scss';
 
-/* 
-work Formik handleChange:
-
-const handleChange = event => {
-   setValues(prevValues => ({
-     ...prevValues,
-     // we use the name to tell Formik which key of `values` to update
-     [event.target.name]: event.target.value
-   });
- }
-*/
-
-const ItemsHeader: React.FC<ItemsHeaderProps> = ({ formik, categories }) => {
+const ItemsHeader: React.FC<ItemsHeaderProps> = ({
+  formik,
+  categories,
+  selectCategory,
+  selectedCategoryId,
+}) => {
   return (
     <div className="items__header">
       <div className="items__header-form">
@@ -39,16 +34,15 @@ const ItemsHeader: React.FC<ItemsHeaderProps> = ({ formik, categories }) => {
               <div className="items__header-err">{formik.errors.text}</div>
             )}
 
-            {!window.location.pathname.includes('/categories') && categories && (
-              <>
-                <div className="items__header-categories">
-                  {categories.length ? 'cat' : <>No categories</>}
-                </div>
-                {formik.errors.categoryId && formik.touched.categoryId && (
-                  <div className="items__header-err">{formik.errors.categoryId}</div>
-                )}
-              </>
+            {!window.location.pathname.includes('/categories') && (
+              <ListOfSelectCategory
+                formik={formik}
+                categories={categories}
+                selectCategory={selectCategory}
+                selectedCategoryId={selectedCategoryId}
+              />
             )}
+
             {!window.location.pathname.includes('/categories') ? (
               <Link className="items__header-link" to="/categories">
                 All categories

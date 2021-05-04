@@ -12,17 +12,15 @@ import { RootState } from 'store/types';
 const CategoriesContainer = () => {
   const dispatch = useDispatch();
 
-  const { loading: loadingCategory, error: errorCategory, reload } = useSelector(
+  const { loading: loadingCategory, error: errorCategory } = useSelector(
     (state: RootState) => state.categories
   );
 
   useEffect(() => {
-    if (reload) {
-      dispatch(getAllCategories());
-    }
-  }, [dispatch, reload]);
+    dispatch(getAllCategories());
+  }, [dispatch]);
 
-  if (loadingCategory || reload) {
+  if (loadingCategory) {
     return <Loader />;
   }
 

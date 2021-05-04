@@ -7,19 +7,21 @@ import { FormikParamsNewCategory } from 'containers/CategoriesContainerHeader/ty
 
 import ItemsCotent from 'components/ItemsCotent/ItemsCotent';
 
-import { deleteCategory, updateCategory } from 'store/categories/action';
+import { deleteCategory, updateCategory, getAllCategories } from 'store/categories/action';
 
 import { RootState } from 'store/types';
 
 const CategoriesContainerContent = () => {
   const dispatch = useDispatch();
 
-  const [editTaskId, setEditTaskId] = useState('');
+  const [editableCategoryId, setEditableCategoryId] = useState('');
 
   const { categories } = useSelector((state: RootState) => state.categories);
 
-  const handleSumbit = ({ text }: FormikParamsNewCategory) => {
-    dispatch(updateCategory({ text, id: editTaskId }));
+  const handleSumbit = async ({ text }: FormikParamsNewCategory) => {
+    await dispatch(updateCategory({ text, id: editableCategoryId }));
+    await dispatch(getAllCategories());
+
     formik.resetForm();
   };
 
@@ -36,16 +38,17 @@ const CategoriesContainerContent = () => {
   });
 
   const editCategory = (id: string, text: string) => {
-    setEditTaskId(id);
+    setEditableCategoryId(id);
     formik.setValues({ text });
   };
 
-  const deleteCurrCategory = (id: string) => {
-    dispatch(deleteCategory({ id }));
+  const deleteCurrCategory = async (id: string) => {
+    await dispatch(deleteCategory({ id }));
+    await dispatch(getAllCategories());
   };
 
   const cancelEdit = () => {
-    setEditTaskId('');
+    setEditableCategoryId('');
     formik.resetForm();
   };
 
@@ -53,7 +56,7 @@ const CategoriesContainerContent = () => {
     <>
       <ItemsCotent
         formik={formik}
-        editableTaskId={editTaskId}
+        editableItemId={editableCategoryId}
         editItem={editCategory}
         deleteItem={deleteCurrCategory}
         cancelEdit={cancelEdit}

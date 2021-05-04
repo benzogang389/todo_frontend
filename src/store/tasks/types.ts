@@ -1,5 +1,7 @@
-export const CREATE_NEW_TASK_REQUEST = 'CREATE_NEW_TASK_REQUEST';
-export const CREATE_NEW_TASK_SUCCESS = 'CREATE_NEW_TASK_SUCCESS';
+export const TASKS_REQUEST = 'TASKS_REQUEST';
+export const TASKS_SUCCESS = 'TASKS_SUCCESS';
+export const GET_ALL_TASKS_SUCCESS = 'GET_ALL_TASKS_SUCCESS';
+export const CHANGE_TASKS = 'CHANGE_TASKS';
 export const TASKS_ERROR = 'TASKS_ERROR';
 
 export type TaskType = {
@@ -20,4 +22,13 @@ export interface TasksInitialState {
 export interface CreateNewTaskProps {
   text: string;
   categoryId: string;
+}
+
+export interface ChangeTaskCompleteProps {
+  id: string;
+  completed: boolean;
+}
+
+export interface ChangeTaskContentProps extends CreateNewTaskProps {
+  id: string;
 }

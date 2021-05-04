@@ -51,6 +51,35 @@
   padding: 5px;
   border-radius: 5px;
   background-color: var(--color-light-gray);
+  max-height: 140px;
+  overflow: auto;
+}
+
+.items__header-choose {
+  margin-top: 15px;
+}
+
+.items__header-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 3px;
+  border-bottom: 1px solid var(--color-primary);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.items__header-check {
+  font-family: arial;
+  -ms-transform: scaleX(-1) rotate(-35deg);
+  -webkit-transform: scaleX(-1) rotate(-35deg);
+  transform: scaleX(-1) rotate(-35deg);
+  margin-left: 10px;
+  color: var(--color-secondary);
+  font-weight: bold;
 }
 
 .items__header-link {

@@ -4,15 +4,17 @@ import * as yup from 'yup';
 
 import ItemsHeader from 'components/ItemsHeader/ItemsHeader';
 
-import { createNewCategory } from 'store/categories/action';
+import { createNewCategory, getAllCategories } from 'store/categories/action';
 
 import { FormikParamsNewCategory } from './types';
 
 const CategoriesContainerHeader = () => {
   const dispatch = useDispatch();
 
-  const handleSumbit = ({ text }: FormikParamsNewCategory) => {
-    dispatch(createNewCategory({ text }));
+  const handleSumbit = async ({ text }: FormikParamsNewCategory) => {
+    await dispatch(createNewCategory({ text }));
+    await dispatch(getAllCategories());
+
     formik.resetForm();
   };
 
