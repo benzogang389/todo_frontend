@@ -1,0 +1,60 @@
+.tickets__content__title {
+  margin-top: 30px;
+  font-size: 25px;
+  color: var(--color-light-black);
+  text-align: center;
+}
+
+.tickets__content-list-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tickets__content-list {
+  background-color: var(--color-light-gray);
+  margin-top: 10px;
+  padding: 20px;
+  max-height: 660px;
+  max-width: 1000px;
+  width: 100%;
+  border-radius: 5px;
+  overflow: auto;
+}
+
+.list__card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: var(--color-primary);
+
+  button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    color: var(--color-primary);
+    padding: 3px 10px;
+  }
+}
+
+.list__card-title {
+  font-size: 17px;
+  max-width: 700px;
+}
+
+.list__card-category {
+  color: var(--color-light-black);
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+.list__card-edit {
+  background-color: var(--color-secondary);
+  margin-right: 5px;
+}
+
+.list__card-delete {
+  background-color: var(--color-red);
+}
