@@ -7,11 +7,11 @@ const request = async (url: string, method = 'GET', body: null | string) => {
       },
       body,
     });
-    const data = await response.json();
 
     if (!response.ok) {
-      throw data.errors || new Error('Something went wrong');
+      throw new Error(response.statusText || 'Something went wrong');
     }
+    const data = await response.json();
 
     return data;
   } catch (e) {

@@ -1,11 +1,11 @@
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
 
-import { TicketsInitialState } from './tickets/types';
+import { TasksInitialState } from './tasks/types';
 import { CategoriesInitialState } from './categories/types';
 
 export interface RootState {
-  tickets: TicketsInitialState;
+  tasks: TasksInitialState;
   categories: CategoriesInitialState;
 }
 

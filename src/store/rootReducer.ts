@@ -2,19 +2,19 @@ import { combineReducers, AnyAction } from 'redux';
 
 import { CLEAR_ALL_REDUCERS_DATA, RootState } from 'store/types';
 
-import tickets from './tickets';
+import tasks from './tasks';
 import categories from './categories';
 
-import { initialStateTickets } from './tickets/reducer';
+import { initialStateTasks } from './tasks/reducer';
 import { initialStateCategories } from './categories/reducer';
 
 export const RootInitialState = {
-  tickets: initialStateTickets,
+  tasks: initialStateTasks,
   categories: initialStateCategories,
 };
 
 const allReducers = combineReducers({
-  tickets: tickets.reducer,
+  tasks: tasks.reducer,
   categories: categories.reducer,
 });
 

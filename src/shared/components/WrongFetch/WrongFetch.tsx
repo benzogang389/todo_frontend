@@ -1,21 +1,17 @@
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import MainLayout from 'layouts/MainLayout/MainLayout';
-
-import { clearAllStoreData } from 'store/rootAction';
 
 import { WrongFetchProps } from './types';
 
 import './WrongFetch.scss';
 
 const WrongFetch: React.FC<WrongFetchProps> = ({ error }) => {
-  const dispatch = useDispatch();
   const history = useHistory();
 
   const handleReturnHome = () => {
-    dispatch(clearAllStoreData());
     history.push('/');
+    window.location.reload();
   };
 
   return (

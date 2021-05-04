@@ -1,17 +1,17 @@
-.tickets__content__title {
+.items__content__title {
   margin-top: 30px;
   font-size: 25px;
   color: var(--color-light-black);
   text-align: center;
 }
 
-.tickets__content-list-wrapper {
+.items__content-list-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.tickets__content-list {
+.items__content-list {
   background-color: var(--color-light-gray);
   margin-top: 10px;
   padding: 20px;
@@ -27,6 +27,7 @@
   align-items: flex-start;
   justify-content: space-between;
   padding: 10px;
+  margin: 15px 0;
   background-color: var(--color-primary);
 
   button {
@@ -44,6 +45,17 @@
   max-width: 700px;
 }
 
+.list__card-content {
+  form {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+.list__card-btns--edit {
+  margin-top: 9px;
+}
+
 .list__card-category {
   color: var(--color-light-black);
   margin-top: 5px;
@@ -57,4 +69,14 @@
 
 .list__card-delete {
   background-color: var(--color-red);
+}
+
+.list__card-save {
+  background-color: var(--color-secondary);
+  margin-left: 10px;
+}
+
+.list__card-cancel {
+  background-color: var(--color-red);
+  margin-left: 5px;
 }
