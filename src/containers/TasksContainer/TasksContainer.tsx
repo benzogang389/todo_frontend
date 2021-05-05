@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Loader from 'shared/components/Loader/Loader';
@@ -13,6 +13,7 @@ import { RootState } from 'store/types';
 
 const TasksContainer = () => {
   const dispatch = useDispatch();
+  const [finallyEndFetch, setFinallyEndFetch] = useState(false);
 
   const { loading: loadingTasks, error: errorTask } = useSelector(
     (state: RootState) => state.tasks
@@ -22,15 +23,19 @@ const TasksContainer = () => {
   );
 
   const fetchData = useCallback(async () => {
+    setFinallyEndFetch(false);
+
     await dispatch(getAllCategories());
     await dispatch(getAllTasks());
+
+    setFinallyEndFetch(true);
   }, [dispatch]);
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
-  if (loadingTasks || loadingCategory) {
+  if (loadingTasks || loadingCategory || !finallyEndFetch) {
     return <Loader />;
   }
 

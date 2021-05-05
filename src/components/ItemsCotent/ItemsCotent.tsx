@@ -74,12 +74,14 @@ const ItemsCotent: React.FC<ItemsCotentProps> = ({
                             <div className="items__header-err">{formik.errors.text}</div>
                           )}
 
-                          <ListOfSelectCategory
-                            formik={formik}
-                            categories={categories}
-                            selectCategory={selectCategory}
-                            selectedCategoryId={selectedCategoryId}
-                          />
+                          {!window.location.pathname.includes('/categories') && (
+                            <ListOfSelectCategory
+                              formik={formik}
+                              categories={categories}
+                              selectCategory={selectCategory}
+                              selectedCategoryId={selectedCategoryId}
+                            />
+                          )}
                         </div>
 
                         <div className="list__card-btns list__card-btns--edit">

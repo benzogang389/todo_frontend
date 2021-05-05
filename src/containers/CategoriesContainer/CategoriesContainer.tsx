@@ -1,6 +1,6 @@
 import CategoriesContainerContent from 'containers/CategoriesContainerContent/CategoriesContainerContent';
 import CategoriesContainerHeader from 'containers/CategoriesContainerHeader/CategoriesContainerHeader';
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Loader from 'shared/components/Loader/Loader';
@@ -16,9 +16,13 @@ const CategoriesContainer = () => {
     (state: RootState) => state.categories
   );
 
-  useEffect(() => {
-    dispatch(getAllCategories());
+  const fetchData = useCallback(async () => {
+    await dispatch(getAllCategories());
   }, [dispatch]);
+
+  useEffect(() => {
+    fetchData();
+  }, [dispatch, fetchData]);
 
   if (loadingCategory) {
     return <Loader />;

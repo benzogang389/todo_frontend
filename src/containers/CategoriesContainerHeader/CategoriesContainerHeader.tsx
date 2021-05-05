@@ -12,10 +12,10 @@ const CategoriesContainerHeader = () => {
   const dispatch = useDispatch();
 
   const handleSumbit = async ({ text }: FormikParamsNewCategory) => {
+    formik.resetForm();
+
     await dispatch(createNewCategory({ text }));
     await dispatch(getAllCategories());
-
-    formik.resetForm();
   };
 
   const validationSchema = yup.object({

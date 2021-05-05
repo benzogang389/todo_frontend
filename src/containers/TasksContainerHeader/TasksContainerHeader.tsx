@@ -18,9 +18,10 @@ const TasksContainerHeader = () => {
   const { categories } = useSelector((state: RootState) => state.categories);
 
   const handleSumbit = async ({ text, categoryId }: FormikParamsNewTask) => {
+    formik.resetForm();
+
     await dispatch(createNewTask({ text, categoryId }));
     await dispatch(getAllTasks());
-    formik.resetForm();
   };
 
   const validationSchema = yup.object({

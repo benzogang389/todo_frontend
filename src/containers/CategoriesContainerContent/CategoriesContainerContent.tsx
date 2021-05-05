@@ -19,10 +19,10 @@ const CategoriesContainerContent = () => {
   const { categories } = useSelector((state: RootState) => state.categories);
 
   const handleSumbit = async ({ text }: FormikParamsNewCategory) => {
+    formik.resetForm();
+
     await dispatch(updateCategory({ text, id: editableCategoryId }));
     await dispatch(getAllCategories());
-
-    formik.resetForm();
   };
 
   const valSchemaCategoryHeader = yup.object({

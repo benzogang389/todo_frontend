@@ -22,10 +22,10 @@ const TasksContainerContent = () => {
   const { categories } = useSelector((state: RootState) => state.categories);
 
   const handleSumbit = async ({ text }: FormikParamsNewCategory) => {
+    formik.resetForm();
+
     await dispatch(changeTaskContent({ text, id: editTaskId, categoryId: selectedCategoryId }));
     await dispatch(getAllTasks());
-
-    formik.resetForm();
   };
 
   const valSchemaCategoryHeader = yup.object({
